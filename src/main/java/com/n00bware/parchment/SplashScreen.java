@@ -7,6 +7,8 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+//import com.n00bware.parchment.R;
+
  
 public class SplashScreen extends Activity {
 
@@ -39,7 +41,7 @@ public class SplashScreen extends Activity {
                 public void run() {
 
                     /* Create an intent that will start the main activity. */
-                    Intent parchment = new Intent(SplashScreen.this,   ParchmentActivity.class);
+                    Intent parchment = new Intent(getApplicationContext(),   ParchmentActivity.class);
                     SplashScreen.this.startActivity(parchment);
 
                     /* Finish splash activity so user cant go back to it. */

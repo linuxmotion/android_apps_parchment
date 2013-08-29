@@ -3,22 +3,14 @@ package com.n00bware.parchment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Environment;
-import android.text.Editable;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
@@ -29,6 +21,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import com.n00bware.parchment.R;
 /* 
  * TODO move .close() statements to finally blocks
  * nomenclature object prefixes are changing; to claify
@@ -40,7 +33,7 @@ import java.io.IOException;
 public class ParchmentActivity extends Activity {
 
     private final String TAG = "Parchment";
-    private final String FILENAME = "filename";
+    private final String FILENAME = "RESOURCE";
     private final String DIRECTORY = "directory";
     private final String DEFAULT_OPEN_PATH = "/sdcard/parchment/parchment_test";
     private final String BLANK = "";
@@ -74,6 +67,10 @@ public class ParchmentActivity extends Activity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+       if (icicle != null){
+           Log.d(TAG,"The bundle has " + icicle.size() + " entries");
+
+       }
         //we want to be sure Global.SAVEABLE =TRUE
         //then set false when we just want to open files
         Global.SAVEABLE = true;
@@ -127,7 +124,7 @@ public class ParchmentActivity extends Activity {
     @Override
     public void onStart() {
         super.onStart();
-        setContentView(R.layout.main);
+        setContentView(R.layout.parchment);
         Log.d(TAG, "onStart");
 
         pContents = pSharedPrefs.getString(SAVE_MARKER, BLANK);
